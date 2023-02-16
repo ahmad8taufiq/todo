@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database.js')
 
-const Todo = sequelize.define('Todo', {
+const Todo = sequelize.define('todo', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
