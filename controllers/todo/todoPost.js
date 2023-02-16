@@ -12,6 +12,7 @@ todoPost.post('/', async (req, res) => {
 
         const todoRepo = new TodoRepository
         const create = await todoRepo.create(value)
+
         const todo = await todoRepo.getByID(create.id)
         return response(res, 201, body('Success', 'Success', todo))
     } catch(err) {

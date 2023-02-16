@@ -10,8 +10,8 @@ activityGetByID.get('/:id', async (req, res) => {
     const activity = await activityRepo.getByID(id)
     
     const statusCode = activity ? 200 : 404
-    const status = activity ? 'Success' : `Activity with ID ${id} Not Found`
-    const message = activity ? 'Success' : 'Not Found'
+    const status = activity ? 'Success' : 'Not Found'
+    const message = activity ? 'Success' : `Activity with ID ${id} Not Found`
     const data = activity ? activity : {}
     
     return response(res, statusCode, body(status, message, data))

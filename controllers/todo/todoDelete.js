@@ -10,8 +10,8 @@ todoDelete.delete('/:id', async (req, res) => {
     const todo = await todoRepo.delete(id)
 
     const statusCode = todo ? 200 : 404
-    const status = todo ? 'Success' : `Todo with ID ${id} Not Found`
-    const message = todo ? 'Success' : 'Not Found'
+    const status = todo ? 'Success' : 'Not Found'
+    const message = todo ? 'Success' : `Todo with ID ${id} Not Found`
     
     return response(res, statusCode, body(status, message, {}))
 })

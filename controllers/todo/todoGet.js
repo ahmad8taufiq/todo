@@ -5,9 +5,11 @@ const TodoRepository = require('../../repository/todoRepository.js')
 const todoGet = express.Router()
 
 todoGet.get('/', async (req, res) => {
+    const { activity_group_id } = req.query
+
     const todoRepo = new TodoRepository
-    const todo = await todoRepo.getAll() 
-    
+    const todo = await todoRepo.getAll(activity_group_id)
+
     return response(res, 200, body('Success', 'Success', todo))
 })
 

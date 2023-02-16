@@ -10,9 +10,9 @@ todoGetByID.get('/:id', async (req, res) => {
     const todo = await todoRepo.getByID(id)
     
     const statusCode = todo ? 200 : 404
-    const status = todo ? 'Success' : `Todo with ID ${id} Not Found`
-    const message = todo ? 'Success' : 'Not Found'
-    const data = todo ? todo : {}
+    const status = todo ? 'Success' : 'Not Found'
+    const message = todo ? 'Success' : `Todo with ID ${id} Not Found`
+    const data = todo ? todo : []
     
     return response(res, statusCode, body(status, message, data))
 })

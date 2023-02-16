@@ -10,8 +10,8 @@ activityDelete.delete('/:id', async (req, res) => {
     const activity = await activityRepo.delete(id)
 
     const statusCode = activity ? 200 : 404
-    const status = activity ? 'Success' : `Activity with ID ${id} Not Found`
-    const message = activity ? 'Success' : 'Not Found'
+    const status = activity ? 'Success' : 'Not Found'
+    const message = activity ? 'Success' : `Activity with ID ${id} Not Found`
     
     return response(res, statusCode, body(status, message, {}))
 })

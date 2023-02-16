@@ -10,8 +10,10 @@ class TodoRepository {
         }
     }
 
-    async getAll() {
-        return await Todo.findAll()
+    async getAll(activity_group_id) {
+        return activity_group_id ? await Todo.findAll({
+            where: { activity_group_id },
+        }) : await Todo.findAll()
     }
 
     async getByID(id) {

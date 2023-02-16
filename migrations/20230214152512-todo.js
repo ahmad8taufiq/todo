@@ -11,7 +11,7 @@ module.exports = {
         primaryKey: true,
       },
       activity_group_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       title: {
@@ -21,6 +21,12 @@ module.exports = {
       priority: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: 'very-high',
+      },
+      is_active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
       },
       created_at: {
         type: Sequelize.DATE,

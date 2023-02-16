@@ -9,13 +9,16 @@ const Todo = sequelize.define('todo', {
     field: 'todo_id',
   },
   activity_group_id: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
   },
   title: {
     type: DataTypes.STRING,
   },
   priority: {
     type: DataTypes.STRING,
+  },
+  is_active: {
+    type: DataTypes.BOOLEAN,
   },
   createdAt: {
     type: DataTypes.DATE,

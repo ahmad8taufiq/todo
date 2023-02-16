@@ -4,14 +4,18 @@ const TodoSchema = require('../../schemas/todoSchema.js')
 const { body, response } = require('../../cores/response.js')
 const TodoRepository = require('../../repository/todoRepository.js')
 
-const todoPut = express.Router()
+const todoPatch = express.Router()
 
-todoPut.patch('/:id', async (req, res) => {
+todoPatch.patch('/:id', async (req, res) => {
     try {
         const { id } = req.params
+
+        const todoRepo = new TodoRepository
+        const isExists = await todoRepo.getByID(id)
+        if(!isExists) throw response(res, 404, body('Not Found', `Todo with ID ${id} Not Found`, null))
+        
         req.body.updated_at = moment().format('YYYY-MM-DD HH:mm:ss')
         
-        const todoRepo = new TodoRepository
         const todo = await todoRepo.update(id, req.body)
         
         const statusCode = todo ? 200 : 404
@@ -25,4 +29,4 @@ todoPut.patch('/:id', async (req, res) => {
     }
 })
 
-module.exports = todoPut
+module.exports = todoPatch
