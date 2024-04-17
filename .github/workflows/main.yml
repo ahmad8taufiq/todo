@@ -30,4 +30,5 @@ jobs:
 
       - name: dockerize
         run: |
+          cp .env.example .env
           docker compose up -d --build
