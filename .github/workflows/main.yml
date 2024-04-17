@@ -7,17 +7,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  NODE_VERSION: "18.13.0"
-  NODE_ENV: ${{ secrets.NODE_ENV }}
-  PORT: ${{ secrets.PORT }}
-  MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
-  MYSQL_DBNAME: ${{ secrets.MYSQL_DBNAME }}
-  MYSQL_USER: ${{ secrets.MYSQL_USER }}
-  MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-  MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
-  MYSQL_DRIVER: ${{ secrets.MYSQL_DRIVER }}
-  
 jobs:
   deploy:
     runs-on: self-hosted
@@ -27,10 +16,21 @@ jobs:
       
       - name: Set up Node.js
         uses: actions/setup-node@v3
+        env:
+          NODE_VERSION: "18.13.0"
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Environtment
+        env:
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          PORT: ${{ secrets.PORT }}
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_DBNAME: ${{ secrets.MYSQL_DBNAME }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+          MYSQL_DRIVER: ${{ secrets.MYSQL_DRIVER }}
         run: |
           touch .env
           echo "NODE_ENV=$NODE_ENV" >> .env
