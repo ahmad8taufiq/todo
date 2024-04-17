@@ -9,6 +9,7 @@ on:
 
 jobs:
   deploy:
+    environment: env
     runs-on: self-hosted
             
     steps:
