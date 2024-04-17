@@ -13,7 +13,7 @@ env:
   PORT: $PORT
   MYSQL_HOST: $MYSQL_HOST
   MYSQL_DBNAME: $MYSQL_DBNAME
-  MYSQL_USER: $vars.MYSQL_USER
+  MYSQL_USER: $MYSQL_USER
   MYSQL_PASSWORD: $MYSQL_PASSWORD
   MYSQL_PORT: $MYSQL_PORT
   MYSQL_DRIVER: $MYSQL_DRIVER
@@ -33,14 +33,15 @@ jobs:
       - name: Set up Environtment
         run: |
           touch .env
-          echo "NODE_ENV=$NODE_ENV" >> .env
-          echo "PORT=$PORT" >> .env
-          echo "MYSQL_HOST=$MYSQL_HOST" >> .env
-          echo "MYSQL_DBNAME=$MYSQL_DBNAME" >> .env
-          echo "MYSQL_USER=$MYSQL_USER" >> .env
-          echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> .env
-          echo "MYSQL_PORT=$MYSQL_PORT" >> .env
-          echo "MYSQL_DRIVER=$MYSQL_DRIVER" >> .env
+          echo "NODE_ENV=${{ env.NODE_ENV }}" >> .env
+          echo "PORT=${{ env.PORT }}" >> .env
+          echo ""
+          echo "MYSQL_HOST=${{ env.MYSQL_HOST }}" >> .env
+          echo "MYSQL_DBNAME=${{ env.MYSQL_DBNAME }}" >> .env
+          echo "MYSQL_USER=${{ env.MYSQL_USER }}" >> .env
+          echo "MYSQL_PASSWORD=${{ env.MYSQL_PASSWORD }}" >> .env
+          echo "MYSQL_PORT=${{ env.MYSQL_PORT }}" >> .env
+          echo "MYSQL_DRIVER=${{ env.MYSQL_DRIVER }}" >> .env
 
       - name: dockerize
         run: |
