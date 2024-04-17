@@ -10,7 +10,7 @@ todoGet.get('/', async (req, res) => {
     const todoRepo = new TodoRepository
     const todo = await todoRepo.getAll(activity_group_id)
 
-    return response(res, 200, body('Success', 'Success', todo))
+    return response(res, 200, body('Success', 'Test', todo))
 })
 
 module.exports = todoGet
