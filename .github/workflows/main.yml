@@ -25,6 +25,7 @@ jobs:
       - name: Set up Environtment
         run: |
           touch .env
+          echo ${{secrets.MYSQL_DBNAME}}
           echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
           echo "PORT=${{ secrets.PORT }}" >> .env
           echo "" >> .env
