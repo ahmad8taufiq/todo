@@ -22,7 +22,5 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run start --if-present
+      - name: dockerize
+        run: docker compose up -d --build
