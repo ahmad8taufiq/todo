@@ -9,6 +9,8 @@ on:
 
 env:
   NODE_VERSION: '18.13.0'
+  NODE_ENV: $NODE_ENV
+  PORT: $PORT
   MYSQL_HOST: $MYSQL_HOST
   MYSQL_DBNAME: $MYSQL_DBNAME
   MYSQL_USER: $vars.MYSQL_USER
@@ -28,7 +30,18 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Set up Environtment
+        run: |
+          touch .env
+          echo "NODE_ENV=$NODE_ENV" >> .env
+          echo "PORT=$PORT" >> .env
+          echo "MYSQL_HOST=$MYSQL_HOST" >> .env
+          echo "MYSQL_DBNAME=$MYSQL_DBNAME" >> .env
+          echo "MYSQL_USER=$MYSQL_USER" >> .env
+          echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> .env
+          echo "MYSQL_PORT=$MYSQL_PORT" >> .env
+          echo "MYSQL_DRIVER=$MYSQL_DRIVER" >> .env
+
       - name: dockerize
         run: |
-          cp .env.example .env
           docker compose up -d --build
