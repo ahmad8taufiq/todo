@@ -8,7 +8,15 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '18.13.0'
+  NODE_VERSION: "18.13.0"
+  NODE_ENV: ${{ secrets.NODE_ENV }}
+  PORT: ${{ secrets.PORT }}
+  MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+  MYSQL_DBNAME: ${{ secrets.MYSQL_DBNAME }}
+  MYSQL_USER: ${{ secrets.MYSQL_USER }}
+  MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+  MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+  MYSQL_DRIVER: ${{ secrets.MYSQL_DRIVER }}
   
 jobs:
   deploy:
@@ -25,17 +33,15 @@ jobs:
       - name: Set up Environtment
         run: |
           touch .env
-          echo ${{secrets.MYSQL_DBNAME}}
-          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> .env
-          echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
-          echo "PORT=${{ secrets.PORT }}" >> .env
+          echo "NODE_ENV=$NODE_ENV" >> .env
+          echo "PORT=$PORT" >> .env
           echo "" >> .env
-          echo "MYSQL_HOST=${{ secrets.MYSQL_HOST }}" >> .env
-          echo "MYSQL_DBNAME=${{ secrets.MYSQL_DBNAME }}" >> .env
-          echo "MYSQL_USER=${{ secrets.MYSQL_USER }}" >> .env
-          echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> .env
-          echo "MYSQL_PORT=${{ secrets.MYSQL_PORT }}" >> .env
-          echo "MYSQL_DRIVER=${{ secrets.MYSQL_DRIVER }}" >> .env
+          echo "MYSQL_HOST=$MYSQL_HOST" >> .env
+          echo "MYSQL_DBNAME=$MYSQL_DBNAME" >> .env
+          echo "MYSQL_USER=$MYSQL_USER" >> .env
+          echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> .env
+          echo "MYSQL_PORT=$MYSQL_PORT" >> .env
+          echo "MYSQL_DRIVER=$MYSQL_DRIVER" >> .env
 
       - name: dockerize
         run: |
