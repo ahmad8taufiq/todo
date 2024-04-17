@@ -9,12 +9,12 @@ on:
 
 env:
   NODE_VERSION: '18.13.0'
-  MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
-  MYSQL_DBNAME: ${{ secrets.MYSQL_DBNAME }}
-  MYSQL_USER: ${{ secrets.MYSQL_USER }}
-  MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-  MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
-  MYSQL_DRIVER: ${{ secrets.MYSQL_DRIVER }}
+  MYSQL_HOST: ${{ vars.MYSQL_HOST }}
+  MYSQL_DBNAME: ${{ vars.MYSQL_DBNAME }}
+  MYSQL_USER: ${{ vars.MYSQL_USER }}
+  MYSQL_PASSWORD: ${{ vars.MYSQL_PASSWORD }}
+  MYSQL_PORT: ${{ vars.MYSQL_PORT }}
+  MYSQL_DRIVER: ${{ vars.MYSQL_DRIVER }}
   
 jobs:
   deploy:
