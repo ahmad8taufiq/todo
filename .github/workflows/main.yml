@@ -22,8 +22,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Telegram Notify
-        uses: appleboy/telegram-action@v0.1.1
+      - name: Telegram Message Notify ARM64
+        uses: lyzcoote/telegram-action@0.0.1 
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
